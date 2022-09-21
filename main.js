@@ -7,20 +7,25 @@ document.querySelector('#inputField').addEventListener('keypress', function (e) 
 });
 
 async function apiRequest(){
-    const alienName = document.querySelector('input').value
+    const captainName = document.querySelector('input').value
     try{
-        const response = await fetch(`https:/gg-star-trek-aliens-api.herokuapp.com/api/${alienName}`)
+        const response = await fetch(`https://log-captains-api.herokuapp.com/api/${captainName}`)
         const data = await response.json()
         
         console.log(data)
-        document.getElementById('alienName').innerText = data.speciesName
-        document.getElementById('alienWorld').innerText = data.homeworld
-        document.getElementById('alienFeatures').innerText = data.features
-        document.getElementById('alienFacts').innerText = data.interestingFact
-        document.getElementById('alienExamples').innerText = data.notableExamples
+        document.getElementById('captainFullName').innerText = data.fullName
+        document.getElementById('captainSpecies').innerText = data.species
+        document.getElementById('birthYear').innerText = data.born
+        document.getElementById('deathYear').innerText = data.died
+        document.getElementById('actor').innerText = data.actor
+        document.getElementById('funFact').innerText = data.funFact
+        document.getElementById('ship').innerText = data.ship
 
-        document.getElementById('alienImage').src = data.image
-        document.getElementById('alienCaption').innerText = data.speciesName
+        document.getElementById('captainImage').src = data.image
+        document.getElementById('captainImageCaption').innerText = data.name
+
+        document.getElementById('shipImage').src = data.shipImage
+        document.getElementById('shipImageCaption').innerText = data.ship
 
     }catch(error) {
         console.log(error)
